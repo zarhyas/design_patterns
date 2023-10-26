@@ -2,6 +2,15 @@ package com.ensa.projects.designpatterns.service;
 
 public class EmployeeService {
 
-    // CRUD on Employee, ...
+    private static EmployeeService instance;
+    private EmployeeService(){}
 
+    public static EmployeeService getInstance(){
+        if (instance == null){
+            instance = new EmployeeService();
+        }
+        return instance;
+    }
+
+    // CRUD on Employee, ...
 }
