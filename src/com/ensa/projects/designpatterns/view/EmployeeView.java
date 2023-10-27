@@ -1,5 +1,6 @@
 package com.ensa.projects.designpatterns.view;
 
+import com.ensa.projects.designpatterns.beans.Employee;
 import com.ensa.projects.designpatterns.service.EmployeeService;
 
 public class EmployeeView {
@@ -20,6 +21,16 @@ public class EmployeeView {
         return instance;
     }
 
+    public void displayEmployeeDetails(int id, String nom) {
+        System.out.println("Employee ID: " + id);
+        System.out.println("Employee Name: " + nom);
+    }
+
+    public void addAndDisplayEmployee(int id, String nom) {
+        Employee employee = new Employee(id, nom);
+        employeeService.addEmployee(employee);
+        displayEmployeeDetails(id, nom);
+    }
 
     // methods for displaying employee info
 }
