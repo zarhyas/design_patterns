@@ -25,6 +25,13 @@ public class EmployeeService {
         return employeeDAO.copyEmployee(original);
     }
 
+    public void createEmployee(){
+        Employee emp = new Employee.EmployeeBuilder(1, "Zarhloul")
+                .prenom("Yasser")
+                .email("zarhloulyasser@gmail.com")
+                .build();
+    }
+
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
