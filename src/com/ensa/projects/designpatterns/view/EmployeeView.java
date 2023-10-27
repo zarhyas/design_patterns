@@ -32,5 +32,8 @@ public class EmployeeView {
         displayEmployeeDetails(id, nom);
     }
 
-    // methods for displaying employee info
+    public void copyAndShow(Employee original) throws CloneNotSupportedException {
+        Employee copy = EmployeeService.getInstance().copyEmployee(original);
+        // do something with copy
+    }
 }

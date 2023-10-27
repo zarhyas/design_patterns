@@ -14,3 +14,9 @@
 
 - Don't touch DAO
 
+## DP3 - Prototype
+
+- The new object is slightly different from the existing one
+- if only the state is different, then we can create the instances with the appropriate state beforehand and
+then clone them whenever we want.
+
