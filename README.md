@@ -33,6 +33,7 @@ public class Singleton  {
 
 ## DP2 - Factory
 
+- Defines an interface for creating an object, but let subclasses decide which class to instantiate.
 - Don't touch DAO
 
 ## DP3 - Prototype
@@ -44,4 +45,3 @@ then clone them whenever we want.
 ## DP4 - Builder
 
 - Creating an object is complex or the client expects different representations for the object that's constructed.
-
