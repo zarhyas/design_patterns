@@ -3,7 +3,7 @@ package com.ensa.projects.designpatterns.view;
 import com.ensa.projects.designpatterns.beans.Employee;
 import com.ensa.projects.designpatterns.service.EmployeeService;
 
-public class EmployeeView {
+public class EmployeeView implements IView{
     private EmployeeService employeeService = EmployeeService.getInstance();    // different call
 
 
@@ -12,7 +12,7 @@ public class EmployeeView {
     // in which case we don't need a singleton class
 
     private static EmployeeView instance;
-    private EmployeeView(){}
+    public EmployeeView(){}
 
     public static EmployeeView getInstance(){
         if(instance == null){
@@ -35,5 +35,10 @@ public class EmployeeView {
     public void copyAndShow(Employee original) throws CloneNotSupportedException {
         Employee copy = EmployeeService.getInstance().copyEmployee(original);
         // do something with copy
+    }
+
+    @Override
+    public void displayEmployee(Employee employee) {
+
     }
 }

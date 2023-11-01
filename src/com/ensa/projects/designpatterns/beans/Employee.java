@@ -1,6 +1,10 @@
 package com.ensa.projects.designpatterns.beans;
 
-public class Employee implements Cloneable{
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Employee implements Cloneable , IEmployee{
     private int id;
     private String nom;
     private String prenom;
@@ -11,9 +15,11 @@ public class Employee implements Cloneable{
     private double salaire;
     private String dateEmbauche;
     private String poste;
+    private List<IEmployee> teamMembers = new ArrayList<>();
+
 
     // make constructor private
-    private Employee(EmployeeBuilder EmployeeEmployeeBuilder) {
+    public Employee(EmployeeBuilder EmployeeEmployeeBuilder) {
         this.id = EmployeeEmployeeBuilder.id;
         this.nom = EmployeeEmployeeBuilder.nom;
         this.prenom = EmployeeEmployeeBuilder.prenom;
@@ -24,6 +30,47 @@ public class Employee implements Cloneable{
         this.salaire = EmployeeEmployeeBuilder.salaire;
         this.dateEmbauche = EmployeeEmployeeBuilder.dateEmbauche;
         this.poste = EmployeeEmployeeBuilder.poste;
+    }
+
+    public Employee(Employee state) {
+        this.id = state.id;
+        this.nom = state.nom;
+        this.prenom = state.prenom;
+        this.adresse = state.adresse;
+        this.email = state.email;
+        this.telephone = state.telephone;
+        this.dateNaissance = state.dateNaissance;
+        this.salaire = state.salaire;
+        this.dateEmbauche = state.dateEmbauche;
+        this.poste = state.poste;
+
+        this.teamMembers = new ArrayList<>();
+        for (IEmployee teamMember : state.teamMembers) {
+            this.teamMembers.add(new Employee((EmployeeBuilder) teamMember));
+        }
+    }
+
+    public Employee(int id, String nom) {
+    }
+
+    public Employee() {
+
+    }
+
+
+    @Override
+    public void addEmployee(IEmployee employee) {
+        teamMembers.add(employee);
+    }
+
+    @Override
+    public void removeEmployee(IEmployee employee) {
+        teamMembers.remove(employee);
+    }
+
+    @Override
+    public List<IEmployee> getTeamMembers() {
+        return Collections.unmodifiableList(teamMembers);
     }
 
     public static class EmployeeBuilder{
